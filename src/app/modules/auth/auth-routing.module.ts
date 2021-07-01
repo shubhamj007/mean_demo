@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AngularMaterialModule } from 'src/app/shared/angular-material.module';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
 {
@@ -42,7 +43,9 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule,
     AngularMaterialModule,
-    FlexLayoutModule],
+    FlexLayoutModule,
+    FormsModule,
+    ReactiveFormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AuthRoutingModule {

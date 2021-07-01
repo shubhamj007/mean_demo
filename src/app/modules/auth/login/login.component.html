@@ -1,22 +1,27 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<div id="sect1" class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
 
     <mat-card class="box">
       <mat-card-header>
         <mat-card-title>Log in</mat-card-title>
       </mat-card-header>
   
-      <form class="example-form">
+      <form class="example-form" [formGroup]="loginForm" autocomplete="off"  (ngSubmit)="submit()"> 
         <mat-card-content>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Username">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Enter username"   formControlName="userName" class="form-control"  required>
           </mat-form-field>
   
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Password">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Enter password"  [type]="fieldTextType ? 'text' : 'password'" formControlName="passWord"  class="form-control" minlength="6" required>
+            <button  mat-icon-button matSuffix [attr.aria-label]="'Hide password'"[attr.aria-pressed]="fieldTextType"
+             (click)="fieldTextType = !fieldTextType" >
+             <mat-icon  style="font-size: 24px;">{{fieldTextType ? 'visibility' : 'visibility_off'}}</mat-icon></button>
           </mat-form-field>
         </mat-card-content>
-        <button mat-stroked-button color="accent" class="btn-block">Log in</button>
+        <button mat-stroked-button color="accent" class="btn-block"  [disabled]="!loginForm.valid">Log in</button>
       </form>
+
     </mat-card>
-  
-  </div>
+</div>
